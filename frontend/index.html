@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-in-One Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-container">
+            <div class="tabs">
+                <button class="tab-btn active" data-mode="basic">Basic</button>
+                <button class="tab-btn" data-mode="scientific">Scientific</button>
+                <button class="tab-btn" data-mode="financial">Financial</button>
+            </div>
+
+            <div class="display" id="display">
+                <div class="input-display" id="input-display">0</div>
+                <div class="result-display" id="result-display"></div>
+            </div>
+
+            <!-- Basic Calculator -->
+            <div class="calculator-mode active" id="basic-mode">
+                <div class="button-grid">
+                    <button class="btn btn-clear" data-kind="clear">C</button>
+                    <button class="btn btn-clear" data-kind="backspace" aria-label="Backspace">⌫</button>
+                    <button class="btn btn-operator" data-kind="operator" data-value="%" title="Remainder (modulo)">mod</button>
+                    <button class="btn btn-operator" data-kind="operator" data-value="/" aria-label="Divide">÷</button>
+
+                    <button class="btn btn-number" data-kind="digit" data-value="7">7</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="8">8</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="9">9</button>
+                    <button class="btn btn-operator" data-kind="operator" data-value="*" aria-label="Multiply">×</button>
+
+                    <button class="btn btn-number" data-kind="digit" data-value="4">4</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="5">5</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="6">6</button>
+                    <button class="btn btn-operator" data-kind="operator" data-value="-" aria-label="Subtract">−</button>
+
+                    <button class="btn btn-number" data-kind="digit" data-value="1">1</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="2">2</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="3">3</button>
+                    <button class="btn btn-operator" data-kind="operator" data-value="+" aria-label="Add">+</button>
+
+                    <button class="btn btn-number" data-kind="digit" data-value="0">0</button>
+                    <button class="btn btn-number" data-kind="decimal" aria-label="Decimal point">.</button>
+                    <button class="btn btn-equals" data-kind="equals">=</button>
+                </div>
+            </div>
+
+            <!-- Scientific Calculator -->
+            <div class="calculator-mode" id="scientific-mode">
+                <div class="button-grid function-grid">
+                    <button class="btn btn-scientific" data-kind="function" data-value="sin(">sin</button>
+                    <button class="btn btn-scientific" data-kind="function" data-value="cos(">cos</button>
+                    <button class="btn btn-scientific" data-kind="function" data-value="tan(">tan</button>
+                    <button class="btn btn-scientific" data-kind="function" data-value="asin(">asin</button>
+                    <button class="btn btn-scientific" data-kind="function" data-value="acos(">acos</button>
+
+                    <button class="btn btn-scientific" data-kind="function" data-value="log(" title="Base-10 logarithm">log</button>
+                    <button class="btn btn-scientific" data-kind="function" data-value="ln(" title="Natural logarithm">ln</button>
+                    <button class="btn btn-scientific" data-kind="function" data-value="sqrt(">√</button>
+                    <button class="btn btn-scientific" data-kind="function" data-value="cbrt(" title="Cube root">∛</button>
+                    <button class="btn btn-scientific" data-kind="function" data-value="abs(">abs</button>
+
+                    <button class="btn btn-scientific" data-kind="constant" data-value="π">π</button>
+                    <button class="btn btn-scientific" data-kind="constant" data-value="e">e</button>
+                    <button class="btn btn-scientific" data-kind="function" data-value="exp(" title="e to the power x">exp</button>
+                    <button class="btn btn-scientific" data-kind="function" data-value="atan(">atan</button>
+                    <button class="btn btn-scientific" data-kind="operator" data-value="^" title="Power">xʸ</button>
+
+                    <button class="btn btn-scientific" data-kind="open">(</button>
+                    <button class="btn btn-scientific" data-kind="close">)</button>
+                    <button class="btn btn-scientific" data-kind="postfix" data-value="^2" title="Square">x²</button>
+                    <button class="btn btn-scientific" data-kind="postfix" data-value="!" title="Factorial">x!</button>
+                    <button class="btn btn-scientific" data-kind="degrad" id="deg-rad" title="Toggle degrees / radians">DEG</button>
+                </div>
+
+                <div class="button-grid keypad">
+                    <button class="btn btn-clear" data-kind="clear">C</button>
+                    <button class="btn btn-clear" data-kind="backspace" aria-label="Backspace">⌫</button>
+                    <button class="btn btn-operator" data-kind="operator" data-value="%" title="Remainder (modulo)">mod</button>
+                    <button class="btn btn-operator" data-kind="operator" data-value="/" aria-label="Divide">÷</button>
+
+                    <button class="btn btn-number" data-kind="digit" data-value="7">7</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="8">8</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="9">9</button>
+                    <button class="btn btn-operator" data-kind="operator" data-value="*" aria-label="Multiply">×</button>
+
+                    <button class="btn btn-number" data-kind="digit" data-value="4">4</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="5">5</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="6">6</button>
+                    <button class="btn btn-operator" data-kind="operator" data-value="-" aria-label="Subtract">−</button>
+
+                    <button class="btn btn-number" data-kind="digit" data-value="1">1</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="2">2</button>
+                    <button class="btn btn-number" data-kind="digit" data-value="3">3</button>
+                    <button class="btn btn-operator" data-kind="operator" data-value="+" aria-label="Add">+</button>
+
+                    <button class="btn btn-number" data-kind="digit" data-value="0">0</button>
+                    <button class="btn btn-number" data-kind="decimal" aria-label="Decimal point">.</button>
+                    <button class="btn btn-equals" data-kind="equals">=</button>
+                </div>
+            </div>
+
+            <!-- Financial Calculator -->
+            <div class="calculator-mode" id="financial-mode">
+                <div class="financial-tabs">
+                    <button class="financial-tab-btn active" data-calc="loan">Loan</button>
+                    <button class="financial-tab-btn" data-calc="interest">Interest</button>
+                    <button class="financial-tab-btn" data-calc="mortgage">Mortgage</button>
+                    <button class="financial-tab-btn" data-calc="roi">ROI</button>
+                </div>
+
+                <!-- Loan Calculator -->
+                <div class="financial-calc active" id="loan-calc">
+                    <div class="input-group">
+                        <label for="loan-principal">Principal Amount ($)</label>
+                        <input type="number" id="loan-principal" placeholder="10000" min="0" step="any">
+                    </div>
+                    <div class="input-group">
+                        <label for="loan-rate">Interest Rate (% per year)</label>
+                        <input type="number" id="loan-rate" placeholder="5" min="0" step="any">
+                    </div>
+                    <div class="input-group">
+                        <label for="loan-term">Term (months)</label>
+                        <input type="number" id="loan-term" placeholder="36" min="1" step="1">
+                    </div>
+                    <button class="btn btn-calculate" data-calc="loan">Calculate EMI</button>
+                    <div class="financial-result" id="loan-result"></div>
+                </div>
+
+                <!-- Interest Calculator -->
+                <div class="financial-calc" id="interest-calc">
+                    <div class="input-group">
+                        <label for="interest-principal">Principal Amount ($)</label>
+                        <input type="number" id="interest-principal" placeholder="10000" min="0" step="any">
+                    </div>
+                    <div class="input-group">
+                        <label for="interest-rate">Interest Rate (% per year)</label>
+                        <input type="number" id="interest-rate" placeholder="5" min="0" step="any">
+                    </div>
+                    <div class="input-group">
+                        <label for="interest-time">Time Period (years)</label>
+                        <input type="number" id="interest-time" placeholder="5" min="0" step="any">
+                    </div>
+                    <div class="input-group">
+                        <label for="interest-type">Type</label>
+                        <select id="interest-type">
+                            <option value="simple">Simple Interest</option>
+                            <option value="compound">Compound Interest</option>
+                        </select>
+                    </div>
+                    <div class="input-group" id="compounding-group" hidden>
+                        <label for="interest-compounding">Compounded</label>
+                        <select id="interest-compounding">
+                            <option value="1">Annually</option>
+                            <option value="2">Semi-annually</option>
+                            <option value="4">Quarterly</option>
+                            <option value="12">Monthly</option>
+                            <option value="365">Daily</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-calculate" data-calc="interest">Calculate</button>
+                    <div class="financial-result" id="interest-result"></div>
+                </div>
+
+                <!-- Mortgage Calculator -->
+                <div class="financial-calc" id="mortgage-calc">
+                    <div class="input-group">
+                        <label for="mortgage-price">Home Price ($)</label>
+                        <input type="number" id="mortgage-price" placeholder="300000" min="0" step="any">
+                    </div>
+                    <div class="input-group">
+                        <label for="mortgage-down">Down Payment ($)</label>
+                        <input type="number" id="mortgage-down" placeholder="60000" min="0" step="any">
+                    </div>
+                    <div class="input-group">
+                        <label for="mortgage-rate">Interest Rate (% per year)</label>
+                        <input type="number" id="mortgage-rate" placeholder="4.5" min="0" step="any">
+                    </div>
+                    <div class="input-group">
+                        <label for="mortgage-term">Loan Term (years)</label>
+                        <input type="number" id="mortgage-term" placeholder="30" min="1" step="1">
+                    </div>
+                    <button class="btn btn-calculate" data-calc="mortgage">Calculate</button>
+                    <div class="financial-result" id="mortgage-result"></div>
+                </div>
+
+                <!-- ROI Calculator -->
+                <div class="financial-calc" id="roi-calc">
+                    <div class="input-group">
+                        <label for="roi-initial">Initial Investment ($)</label>
+                        <input type="number" id="roi-initial" placeholder="10000" min="0" step="any">
+                    </div>
+                    <div class="input-group">
+                        <label for="roi-final">Final Value ($)</label>
+                        <input type="number" id="roi-final" placeholder="15000" min="0" step="any">
+                    </div>
+                    <button class="btn btn-calculate" data-calc="roi">Calculate ROI</button>
+                    <div class="financial-result" id="roi-result"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="history-panel">
+            <div class="history-header">
+                <h3>History</h3>
+                <button class="btn-clear-history" id="clear-history">Clear</button>
+            </div>
+            <div class="history-list" id="history-list"></div>
+            <button class="btn-export" id="export-history">Export History</button>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="calculator.js"></script>
+    <script src="scientific.js"></script>
+    <script src="financial.js"></script>
+    <script src="history.js"></script>
+</body>
+</html>
